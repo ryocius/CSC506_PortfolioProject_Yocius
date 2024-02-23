@@ -147,6 +147,3 @@ class Tree:
     def __repr__(self):
         print()
         return repr(self.root)
-
-
-
