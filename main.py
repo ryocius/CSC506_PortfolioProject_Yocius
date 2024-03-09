@@ -9,7 +9,7 @@ def hashBenchmark():
 
 
     # Build objects
-    for i in range(1, 11):
+    for i in range(1, 101):
         ht1 = HashTable()
         k = i * 100
         for j in range(k):
@@ -33,7 +33,7 @@ def bstBenchmark():
     output = {'insert': [], 'remove': [], 'search': []}
 
     # Build objects
-    for i in range(1, 11):
+    for i in range(1, 101):
         array = []
         k = i * 100
         for j in range(k):
@@ -56,12 +56,12 @@ def bstBenchmark():
     return output
 
 def showCombined(hashArray, bstArray):
-    plt.plot(range(1, 11), hashArray['insert'], label='Hash Table Insert')
-    plt.plot(range(1, 11), hashArray['remove'], label='Hash Table Delete')
-    plt.plot(range(1, 11), hashArray['search'], label='Hash Table Search')
-    plt.plot(range(1, 11), bstArray['insert'], label='BST Insert')
-    plt.plot(range(1, 11), bstArray['remove'], label='BST Delete')
-    plt.plot(range(1, 11), bstArray['search'], label='BST Search')
+    plt.plot(range(1, 101), hashArray['insert'], label='Hash Table Insert')
+    plt.plot(range(1, 101), hashArray['remove'], label='Hash Table Delete')
+    plt.plot(range(1, 101), hashArray['search'], label='Hash Table Search')
+    plt.plot(range(1, 101), bstArray['insert'], label='BST Insert')
+    plt.plot(range(1, 101), bstArray['remove'], label='BST Delete')
+    plt.plot(range(1, 101), bstArray['search'], label='BST Search')
     plt.xlabel('Number of Samples (x100)')
     plt.ylabel('Time (s)')
     plt.title('Performance Comparison: Hash Table vs Binary Search Tree (BST)')
@@ -69,9 +69,9 @@ def showCombined(hashArray, bstArray):
     plt.show()
 
 def showHash(hashArray):
-    plt.plot(range(1, 11), hashArray['insert'], label='Hash Table Insert')
-    plt.plot(range(1, 11), hashArray['remove'], label='Hash Table Delete')
-    plt.plot(range(1, 11), hashArray['search'], label='Hash Table Search')
+    plt.plot(range(1, 101), hashArray['insert'], label='Hash Table Insert')
+    plt.plot(range(1, 101), hashArray['remove'], label='Hash Table Delete')
+    plt.plot(range(1, 101), hashArray['search'], label='Hash Table Search')
     plt.xlabel('Number of Samples (x100)')
     plt.ylabel('Time (s)')
     plt.title('Performance: Hash Table')
@@ -80,15 +80,15 @@ def showHash(hashArray):
 
 def showBst(bstArray):
     # Add search
-    plt.plot(range(1, 11), bstArray['insert'], label='BST Insert')
-    plt.plot(range(1, 11), bstArray['remove'], label='BST Delete')
-    plt.plot(range(1, 11), bstArray['search'], label='BST Search')
+    plt.plot(range(1, 101), bstArray['insert'], label='BST Insert')
+    plt.plot(range(1, 101), bstArray['remove'], label='BST Delete')
+    plt.plot(range(1, 101), bstArray['search'], label='BST Search')
     plt.xlabel('Number of Samples (x100)')
     plt.ylabel('Time (s)')
     plt.title('Performance: Binary Search Tree')
     plt.legend()
     plt.show()
 
-showCombined(hashBenchmark(), bstBenchmark())
-showHash(hashBenchmark())
+# showCombined(hashBenchmark(), bstBenchmark())
+# showHash(hashBenchmark())
 showBst(bstBenchmark())
