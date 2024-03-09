@@ -80,7 +80,7 @@ def showHash(hashArray):
 def showBst(bstArray):
     # Add search
     plt.plot(range(1, 101), bstArray['insert'], label='BST Insert')
-    plt.plot(range(1, 101), bstArray['remove'], label='BST Delete')
+    #plt.plot(range(1, 101), bstArray['remove'], label='BST Delete')
     plt.plot(range(1, 101), bstArray['search'], label='BST Search')
     plt.xlabel('Number of Samples (x100)')
     plt.ylabel('Time (s)')

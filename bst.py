@@ -98,9 +98,6 @@ class Tree:
                 root.rightChild = self.__insertHelper(root.rightChild, data)
         return root
 
-    def __rebalance(self):
-        sorted = self.__inorder_traversal(self.root)
-        self.root = self.__build_tree_recurs(sorted, 0, len(sorted) - 1)
 
     def delete(self, root, data):
         if root is None:
@@ -142,6 +139,10 @@ class Tree:
         while current.leftChild is not None:
             current = current.leftChild
         return current
+
+    def __rebalance(self):
+        sorted = self.__inorder_traversal(self.root)
+        self.root = self.__build_tree_recurs(sorted, 0, len(sorted) - 1)
 
     def __inorder_traversal(self, node):
         if node is None:
