@@ -1,8 +1,8 @@
 class BstNode:
-    def __init__(self, data, rightChild=None, leftChild=None):
+    def __init__(self, data):
         self.data = data
-        self.leftChild = rightChild
-        self.rightChild = leftChild
+        self.leftChild = None
+        self.rightChild = None
 
     # Comparable methods
     # Equals (=)
@@ -86,19 +86,16 @@ class Tree:
         return node
 
     def insert(self, data):
-        self.root = self.__insert(self.root, data)
-        self.__rebalance()
+        self.root = self.__insertHelper(self.root, data)
 
-    # protected recursive insert
-    def __insert(self, root, data):
+    def __insertHelper(self, root, data):
         if root is None:
             return BstNode(data)
-
-        node = BstNode(data)
-        if node < root:  # refactored to utilize Comparable module
-            root.leftChild = self.__insert(root.leftChild, data)
-        elif node > root:  # refactored to utilize Comparable module
-            root.rightChild = self.__insert(root.rightChild, data)
+        else:
+            if data < root.data:
+                root.leftChild = self.__insertHelper(root.leftChild, data)
+            else:
+                root.rightChild = self.__insertHelper(root.rightChild, data)
         return root
 
     def __rebalance(self):
@@ -109,10 +106,9 @@ class Tree:
         if root is None:
             return root
 
-        node = BstNode(data)  # refactored to utilize Comparable module
-        if node < root.data:
+        if data < root.data:
             root.leftChild = self.delete(root.leftChild, data)
-        elif node > root.data:
+        elif data > root.data:
             root.rightChild = self.delete(root.rightChild, data)
         else:
             if root.leftChild is None:
@@ -124,10 +120,22 @@ class Tree:
 
             temp = self.__min_val_node(root.rightChild)
             root.data = temp.data
-            root.right = self.delete(root.rightChild, temp.data)
+            root.rightChild = self.delete(root.rightChild, temp.data)
 
         self.__rebalance()
         return root
+
+    def search(self, data):
+        return self.__searchHelper(self.root, data)
+
+    def __searchHelper(self, root, data):
+        if root is None or root.data == data:
+            return root
+
+        if root.data < data:
+            return self.__searchHelper(root.rightChild, data)
+
+        return self.__searchHelper(root.leftChild, data)
 
     def __min_val_node(self, node):
         current = node
