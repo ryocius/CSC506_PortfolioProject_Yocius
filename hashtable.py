@@ -37,7 +37,6 @@ class HashTable:
                 return
         self.table[index].append([key, value])
 
-
     def search(self, key):
         index = self._hash(key)
         for pair in self.table[index]:

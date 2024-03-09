@@ -7,7 +7,6 @@ from hashtable import HashTable, HtNode
 def hashBenchmark():
     output = {'insert': [], 'remove': [], 'search': []}
 
-
     # Build objects
     for i in range(1, 101):
         ht1 = HashTable()
